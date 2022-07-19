@@ -1,10 +1,11 @@
 import {BindingScope, injectable} from '@loopback/core';
 import {repository} from '@loopback/repository';
 import {CardRepository, DeckcardRepository, DeckRepository} from '../repositories';
-import {Card, DeckDto, CreateDeck, Deck, Deckcard} from '../models';
+import {DeckDto, CreateDeck, Deck, Deckcard} from '../models';
 import {DeckType} from '../enum/deck-type';
 import {HttpErrors} from '@loopback/rest';
 import {CardConstants} from '../constants/card-constants';
+import {shuffleArray} from "../util/array.utils";
 
 @injectable({scope: BindingScope.TRANSIENT})
 export class DeckService {
@@ -41,7 +42,7 @@ export class DeckService {
     });
 
     if (createDeck.shuffle) {
-      cards = this.shuffleCards(cards);
+      cards = shuffleArray(cards);
     }
 
     return cards.map((card, index): Deckcard => new Deckcard({
@@ -50,13 +51,6 @@ export class DeckService {
       drawn: false,
       sort: index,
     }));
-  }
-
-  private shuffleCards(cards: Card[]) {
-    return cards
-      .map(value => ({value, sort: Math.random()}))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({value}) => value);
   }
 
   async openDeck(id: string) {

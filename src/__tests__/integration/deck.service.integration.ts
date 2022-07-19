@@ -51,4 +51,10 @@ describe('Deck flow', () => {
 
     expect(card.deckcards.length).to.eql(51);
   });
+  
+  after(async () => {
+    await deckCardRepo.deleteAll();
+    await deckRepo.deleteAll();
+    await deckRepo.deleteAll();
+  })
 })
