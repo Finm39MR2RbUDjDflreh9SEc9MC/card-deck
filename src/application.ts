@@ -10,7 +10,7 @@ import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
 import {CardRepository} from './repositories';
-import {DataSeedService} from './services/data-seed.service';
+import {DataSeedService} from './services';
 
 export {ApplicationConfig};
 

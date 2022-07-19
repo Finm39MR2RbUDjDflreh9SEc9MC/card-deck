@@ -4,7 +4,7 @@ import {CardRepository, DeckcardRepository, DeckRepository} from '../../reposito
 import {DeckType} from '../../enum/deck-type';
 import {CreateDeck} from '../../models';
 import {expect} from '@loopback/testlab';
-import {DataSeedService} from '../../services/data-seed.service';
+import {DataSeedService} from '../../services';
 
 describe('Deck flow', () => {
   let db;
