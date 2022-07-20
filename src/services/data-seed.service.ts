@@ -8,8 +8,8 @@ import {CardConstants} from '../constants/card-constants';
 @injectable({scope: BindingScope.TRANSIENT})
 export class DataSeedService {
   constructor(
-    @repository(CardRepository) private cardRepository: CardRepository) {
-  }
+    @repository(CardRepository) private cardRepository: CardRepository,
+  ) {}
 
   async seedCards(): Promise<void> {
     const cardCount = await this.getCardCount();
@@ -26,12 +26,18 @@ export class DataSeedService {
     const suits = Object.values(Suit);
     const cards: Array<Card> = [];
 
-    suits.forEach((suit) => {
-      for (let i = CardConstants.CARD_MIN_VALUE; i < CardConstants.CARD_MIN_VALUE + CardConstants.CARD_COUNT; i++) {
-        cards.push(new Card({
-          suit: suit,
-          rank: i,
-        }));
+    suits.forEach(suit => {
+      for (
+        let i = CardConstants.CARD_MIN_VALUE;
+        i < CardConstants.CARD_MIN_VALUE + CardConstants.CARD_COUNT;
+        i++
+      ) {
+        cards.push(
+          new Card({
+            suit: suit,
+            rank: i,
+          }),
+        );
       }
     });
 

@@ -5,18 +5,18 @@ import {DeckType} from '../../enum/deck-type';
 export class CreateDeck extends Model {
   @property({
     type: 'string',
-    required: true, 
+    required: true,
     jsonSchema: {
-      enum: Object.values(DeckType)
-    }
+      enum: Object.values(DeckType),
+    },
   })
   deckType: DeckType;
   @property({
     type: 'boolean',
-    required: true
+    required: true,
   })
   shuffle: boolean;
-  
+
   constructor(data?: Partial<CreateDeck>) {
     super(data);
   }

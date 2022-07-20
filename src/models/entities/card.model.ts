@@ -5,14 +5,15 @@ import {BaseEntity} from './baseentity.model';
 
 @model({
   settings: {
-  postgresql: {schema: 'cards', table: 'card'}
-}})
+    postgresql: {schema: 'cards', table: 'card'},
+  },
+})
 export class Card extends BaseEntity {
   @property({
     type: 'string',
     jsonSchema: {
-      enum: Object.values(Suit)
-    }
+      enum: Object.values(Suit),
+    },
   })
   suit: Suit;
 
@@ -33,4 +34,4 @@ export interface CardRelations {
   // describe navigational properties here
 }
 
-export type CardWithRelations = Card & CardRelations
+export type CardWithRelations = Card & CardRelations;

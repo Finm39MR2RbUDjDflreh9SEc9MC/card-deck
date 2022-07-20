@@ -46,10 +46,10 @@ export class CardDeckApplication extends BootMixin(
 
   async migrateSchema(options?: SchemaMigrationOptions) {
     await super.migrateSchema(options);
-    
-   await this.seedCards();
+
+    await this.seedCards();
   }
-  
+
   private async seedCards() {
     const cardRepository = await this.getRepository(CardRepository);
     const seedService = new DataSeedService(cardRepository);

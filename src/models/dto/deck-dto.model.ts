@@ -13,8 +13,8 @@ export class DeckDto extends Model {
   @property()
   decktype: DeckType;
   @property.array(CardDto)
-  cards: CardDto[]
-  
+  cards: CardDto[];
+
   constructor(data?: Partial<DeckDto>) {
     super(data);
   }

@@ -8,7 +8,7 @@ export class DeckMapper {
       remaining: deck.deckcards?.length,
       shuffled: deck.shuffled,
       decktype: deck.decktype,
-      cards: deck.deckcards?.map((card) => CardMapper.map(card)),
+      cards: deck.deckcards?.map(card => CardMapper.map(card)),
     });
   };
-} 
+}

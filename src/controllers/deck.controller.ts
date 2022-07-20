@@ -13,10 +13,7 @@ import {CardMapper} from '../mappers/card.mapper';
 import {DeckMapper} from '../mappers/deck.mapper';
 
 export class DeckController {
-  constructor(
-    @service(DeckService) public deckService: DeckService,
-  ) {
-  }
+  constructor(@service(DeckService) public deckService: DeckService) {}
 
   @post('/deck/create')
   @response(200, {
@@ -37,7 +34,7 @@ export class DeckController {
         },
       },
     })
-      deck: CreateDeck,
+    deck: CreateDeck,
   ): Promise<DeckDto> {
     return this.deckService.createDeck(deck);
   }
@@ -51,9 +48,7 @@ export class DeckController {
       },
     },
   })
-  async openById(
-    @param.path.string('id') id: string,
-  ): Promise<DeckDto> {
+  async openById(@param.path.string('id') id: string): Promise<DeckDto> {
     const deck = await this.deckService.openDeck(id);
 
     return DeckMapper.map(deck);
@@ -73,10 +68,10 @@ export class DeckController {
   })
   async drawCards(
     @param.path.string('id') id: string,
-    @param.query.number('count') count: number = 1,
+    @param.query.number('count') count = 1,
   ): Promise<CardDto[] | null> {
     const drawnCards = await this.deckService.drawCard(id, count);
 
-    return drawnCards.map((card) => (CardMapper.map(card)));
+    return drawnCards.map(card => CardMapper.map(card));
   }
 }

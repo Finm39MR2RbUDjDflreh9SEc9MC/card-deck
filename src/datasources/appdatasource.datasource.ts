@@ -7,8 +7,10 @@ import {DbConfiguration} from '../Configuration';
 // gracefully. The `stop()` method is inherited from `juggler.DataSource`.
 // Learn more at https://loopback.io/doc/en/lb4/Life-cycle.html
 @lifeCycleObserver('datasource')
-export class AppdatasourceDataSource extends juggler.DataSource
-  implements LifeCycleObserver {
+export class AppdatasourceDataSource
+  extends juggler.DataSource
+  implements LifeCycleObserver
+{
   static dataSourceName = 'appdatasource';
 
   constructor(

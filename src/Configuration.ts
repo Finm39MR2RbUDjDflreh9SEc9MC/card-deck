@@ -1,4 +1,6 @@
-require('dotenv').config({path: process.env.NODE_ENV ? `.${process.env.NODE_ENV}.env` : '.env'})
+require('dotenv').config({
+  path: process.env.NODE_ENV ? `.${process.env.NODE_ENV}.env` : '.env',
+});
 
 export const DbConfiguration = {
   name: process.env.DB_NAME as string,
@@ -8,5 +10,5 @@ export const DbConfiguration = {
   port: process.env.DB_PORT as string,
   user: process.env.DB_USER as string,
   password: process.env.DB_PASSWORD as string,
-  database: process.env.DB_DATABASE as string
-}
+  database: process.env.DB_DATABASE as string,
+};

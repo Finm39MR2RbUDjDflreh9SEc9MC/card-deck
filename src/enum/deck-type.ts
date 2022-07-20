@@ -1,4 +1,4 @@
 export enum DeckType {
-  FULL = "FULL",
-  SHORT = "SHORT"
+  FULL = 'FULL',
+  SHORT = 'SHORT',
 }
